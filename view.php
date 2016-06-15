@@ -27,7 +27,6 @@
 
 require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
 require_once(dirname(__FILE__).'/lib.php');
-require_once($CFG->dirroot . '/mod/bitcert/locallib.php');
 
 $id = optional_param('id', 0, PARAM_INT); // Either course_module ID, or ...
 $b  = optional_param('b', 0, PARAM_INT);  // ...bitcert instance ID - it should be named as the first character of the module.
