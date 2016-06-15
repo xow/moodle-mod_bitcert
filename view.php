@@ -62,7 +62,7 @@ if ($bitcert->intro) {
     echo $OUTPUT->box(format_module_intro('bitcert', $bitcert, $cm->id), 'generalbox mod_introbox', 'bitcertintro');
 }
 
-echo $OUTPUT->heading(get_string('modulename', 'mod_bitcert'));
+echo $OUTPUT->heading($bitcert->name);
 
 echo $renderer->render_cert($bitcert, $context);
 

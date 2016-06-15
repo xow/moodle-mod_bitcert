@@ -25,7 +25,7 @@ class mod_bitcert_renderer extends plugin_renderer_base {
     function render_cert($bitcert, $context) {
         global $DB, $OUTPUT;
 
-        $display = 'Test';
+        $display = html_writer::link(new moodle_url('/mod/bitcert/schema.php'), 'View schema');
 
         return $display;
     }
