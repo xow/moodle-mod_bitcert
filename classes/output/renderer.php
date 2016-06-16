@@ -14,7 +14,16 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-class mod_bitcert_renderer extends plugin_renderer_base {
+namespace mod_bitcert\output;
+
+/**
+ * Renderer for digital certificates.
+ *
+ * @package mod_bitcert
+ * @copyright 2016 John Okely <john@moodle.com>
+ * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class renderer extends \plugin_renderer_base {
     /**
      * Initialises the game and returns its HTML code
      *
@@ -25,7 +34,12 @@ class mod_bitcert_renderer extends plugin_renderer_base {
     function render_cert($bitcert, $context) {
         global $DB, $OUTPUT;
 
-        $display = html_writer::link(new moodle_url('/mod/bitcert/schema.php', array('id' => $bitcert->id)), 'View schema');
+        $display = \html_writer::link(new \moodle_url('/mod/bitcert/schema.php', array('id' => $bitcert->id)), 'View schema');
+        $certjson = \mod_bitcert\helper::get_certificate($bitcert);
+        $cert = \json_decode($certjson);
+        $display .= $this->render_from_template('mod_bitcert/certificate', $cert);
+
+        $display .= '<pre>' . $certjson . '</pre>';
 
         return $display;
     }
