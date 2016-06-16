@@ -22,6 +22,10 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
+
+$id = required_param('id', PARAM_INT);
+
 echo <<<EOF
     {
       "assertion": {
